@@ -4,21 +4,20 @@ class Rover
   def initialize(x , y, direction)
     @x = x.to_i
     @y = y.to_i
-    @direction = direction.to_s
-    @direction = @direction.upcase
+    @direction = direction.to_s.upcase
   end   #Assigns values to three states of rover.
 
 
   def move_rover
 
     if @direction == "N"
-      @y += @y
+      @y += 1     #You changed this from @y += @y which was wrong.
     elsif @direction == "W"
-      @x -= @x
+      @x -= 1
     elsif @direction == "S"
-      @y -= @y
+      @y -= 1
     elsif @direction == "E"
-      @x += @x
+      @x += 1
     else
       puts "ERROR."
     end
@@ -28,31 +27,27 @@ class Rover
 
   def turn_rover(n_direction)
 
-    case n_direction
+    case @direction
     when "L"
-      if @direction == "N"
+      if n_direction == "N"
         @direction = "W"
-      elsif @direction == "W"
+      elsif n_direction == "W"
         @direction = "S"
-      elsif @direction == "S"
+      elsif n_direction == "S"
         @direction = "E"
-      elsif @direction == "E"
-        @direction = "N"
       else
-        puts "Not a valid input for direction"
+        @direction = "N"
       end
 
     when "R"
-      if @direction == "N"
-        @direction = "E"
-      elsif @direction == "E"
-        @direction = "S"
-      elsif @direction == "S"
+      if n_direction == "N"
         @direction = "W"
-      elsif @direction == "W"
-        @direction = "N"
+      elsif n_direction == "W"
+        @direction = "S"
+      elsif n_direction == "S"
+        @direction = "E"
       else
-        puts "not a direction"
+        @direction = "N"
       end #This end closes if statement
 
     end   #This end closes case statement.
@@ -73,18 +68,25 @@ def instruct_rover_1
   puts "ex: 1 1 N"
   pos_r1 = gets.chomp.split(" ")
 
+  puts pos_r1   #test print
+
   rover_1 = Rover.new(pos_r1[0], pos_r1[1], pos_r1[2])
+
+  #rover_1.initialize #test -- did not work
+
+  puts rover_1  #test print
 
   puts "How would you like to move the rover? ex: LMRMRML"
   move_r1 = gets.chomp.split(" ")
 
+  puts move_r1  #test print
+
   move_r1.each do |x|
     if ( x == "L" || x == "R")
       rover_1.turn_rover
-    elsif x == "M"
-      rover_1.move_rover
     else
-      puts "Invalid directions given to rover."
+      rover_1.move_rover
+
     end
   end
 
@@ -94,32 +96,65 @@ def instruct_rover_1
 
 end     #End instructions for first rover method.
 
-
 def instruct_rover_2
   puts "What is the position of the second rover?"
   puts "Input an x and y coordinate, and a orientation, with spaces."
   puts "ex: 1 1 N"
   pos_r2 = gets.chomp.split(" ")
 
+  puts pos_r2   #test print
+
   rover_2 = Rover.new(pos_r2[0], pos_r2[1], pos_r2[2])
+
+  #rover_1.initialize #test -- did not work
+
+  puts rover_2  #test print
 
   puts "How would you like to move the rover? ex: LMRMRML"
   move_r2 = gets.chomp.split(" ")
 
+  puts move_r2  #test print
+
   move_r2.each do |x|
     if ( x == "L" || x == "R")
       rover_2.turn_rover
-    elsif x == "M"
-      rover_2.move_rover
     else
-      puts "Invalid directions given to rover."
+      rover_2.move_rover
+
     end
   end
 
   puts "The new position of your rover is: #{rover_2.x}, #{rover_2.y},
   #{rover_2.direction}"
 
-end     #End instructions for second rover method.
+end
+
+
+# def instruct_rover_2
+#   puts "What is the position of the second rover?"
+#   puts "Input an x and y coordinate, and a orientation, with spaces."
+#   puts "ex: 1 1 N"
+#   pos_r2 = gets.chomp.split(" ")
+#
+#   rover_2 = Rover.new(pos_r2[0], pos_r2[1], pos_r2[2])
+#
+#   puts "How would you like to move the rover? ex: LMRMRML"
+#   move_r2 = gets.chomp.split(" ")
+#
+#   move_r2.each do |x|
+#     if ( x == "L" || x == "R")
+#       rover_2.turn_rover
+#     elsif x == "M"
+#       rover_2.move_rover
+#     else
+#       puts "Invalid directions given to rover."
+#     end
+#   end
+#
+#   puts "The new position of your rover is: #{rover_2.x}, #{rover_2.y},
+#   #{rover_2.direction}"
+#
+# end     #End instructions for second rover method.
 
 instruct_rover_1
 instruct_rover_2
