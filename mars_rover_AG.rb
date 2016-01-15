@@ -25,6 +25,7 @@ class Rover
 
   end   #Logic for modifying coordinates based on direction.
 
+
   def turn(n_direction)
 
     case n_direction
@@ -58,8 +59,24 @@ class Rover
 
   end     #This end closes turn method.
 
-  def position
-    puts "#{x}, #{y}, #{direction}"
-  end
 
 end       #This end closes Rover class details.
+
+
+def instruct_rover_1
+  puts "What is the size of your plateau?"
+  puts "Enter two integers, separated by a space, ex: 5 10"
+  size = gets.chomp.split(" ")
+
+  puts "What is the position of the first rover?"
+  puts "Input an x and y coordinate, and a orientation, with spaces."
+  puts "ex: 1 1 N"
+  position_r1 = gets.chomp.split(" ")
+end     #End instructions for second rover method.S
+
+
+def instruct_rover_2
+end     #End instructions for second rover method.
+
+instruct_rover_1
+instruct_rover_2
