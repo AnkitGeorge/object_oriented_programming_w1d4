@@ -27,3 +27,11 @@ cristina = Student.new
 cristina.name = "Cristina"
 cristina.greeting
 cristina.learn
+
+#chris.learn
+# outputs person.rb:31:in `<main>': undefined method `learn' for #<Instructor:
+# 0x007ff3b4055960 @name="Chris"> (NoMethodError)
+
+#cristina.teach
+# outputs person.rb:34:in `<main>': undefined method `teach' for #<Student:
+# 0x007fa8da115898 @name="Cristina"> (NoMethodError)
