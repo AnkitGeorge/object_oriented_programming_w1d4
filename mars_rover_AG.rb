@@ -26,7 +26,7 @@ class Rover
   end   #Logic for modifying coordinates based on direction.
 
 
-  def turn(n_direction)
+  def turn_rover(n_direction)
 
     case n_direction
     when "L"
@@ -71,11 +71,54 @@ def instruct_rover_1
   puts "What is the position of the first rover?"
   puts "Input an x and y coordinate, and a orientation, with spaces."
   puts "ex: 1 1 N"
-  position_r1 = gets.chomp.split(" ")
-end     #End instructions for second rover method.S
+  pos_r1 = gets.chomp.split(" ")
+
+  rover_1 = Rover.new(pos_r1[0], pos_r1[1], pos_r1[2])
+
+  puts "How would you like to move the rover? ex: LMRMRML"
+  move_r1 = gets.chomp.split(" ")
+
+  move_r1.each do |x|
+    if ( x == "L" || x == "R")
+      rover_1.turn_rover
+    elsif x == "M"
+      rover_1.move_rover
+    else
+      puts "Invalid directions given to rover."
+    end
+  end
+
+  puts "The new position of your rover is: #{rover_1.x}, #{rover_1.y},
+  #{rover_1.direction}"
+
+
+end     #End instructions for first rover method.
 
 
 def instruct_rover_2
+  puts "What is the position of the second rover?"
+  puts "Input an x and y coordinate, and a orientation, with spaces."
+  puts "ex: 1 1 N"
+  pos_r2 = gets.chomp.split(" ")
+
+  rover_2 = Rover.new(pos_r2[0], pos_r2[1], pos_r2[2])
+
+  puts "How would you like to move the rover? ex: LMRMRML"
+  move_r2 = gets.chomp.split(" ")
+
+  move_r2.each do |x|
+    if ( x == "L" || x == "R")
+      rover_2.turn_rover
+    elsif x == "M"
+      rover_2.move_rover
+    else
+      puts "Invalid directions given to rover."
+    end
+  end
+
+  puts "The new position of your rover is: #{rover_2.x}, #{rover_2.y},
+  #{rover_2.direction}"
+
 end     #End instructions for second rover method.
 
 instruct_rover_1
