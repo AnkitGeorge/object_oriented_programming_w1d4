@@ -25,29 +25,30 @@ class Rover
   end   #Logic for modifying coordinates based on direction.
 
 
-  def turn_rover(n_direction)
+  def turn_rover(n_direction)     #Because L or R
 
-    case @direction
+    case n_direction              #To evaluate
     when "L"
-      if n_direction == "N"
+      if @direction == "N"        #should be @direction since that is current
+                                  #direction that the rover is facing.
         @direction = "W"
-      elsif n_direction == "W"
+      elsif @direction == "W"
         @direction = "S"
-      elsif n_direction == "S"
+      elsif @direction == "S"
         @direction = "E"
-      else
+      elsif @direction == "E"
         @direction = "N"
       end
 
     when "R"
-      if n_direction == "N"
-        @direction = "W"
-      elsif n_direction == "W"
-        @direction = "S"
-      elsif n_direction == "S"
+      if @direction == "N"
         @direction = "E"
-      else
+      elsif @direction == "W"
         @direction = "N"
+      elsif @direction == "S"
+        @direction = "W"
+      elsif @direction == "E"
+        @direction = "S"
       end #This end closes if statement
 
     end   #This end closes case statement.
@@ -77,13 +78,14 @@ def instruct_rover_1
   puts rover_1  #test print
 
   puts "How would you like to move the rover? ex: LMRMRML"
-  move_r1 = gets.chomp.split(" ")
+  move_r1 = gets.chomp.split("")
+
 
   puts move_r1  #test print
 
   move_r1.each do |x|
     if ( x == "L" || x == "R")
-      rover_1.turn_rover
+      rover_1.turn_rover(x)
     else
       rover_1.move_rover
 
@@ -111,13 +113,13 @@ def instruct_rover_2
   puts rover_2  #test print
 
   puts "How would you like to move the rover? ex: LMRMRML"
-  move_r2 = gets.chomp.split(" ")
+  move_r2 = gets.chomp.split("")
 
   puts move_r2  #test print
 
   move_r2.each do |x|
     if ( x == "L" || x == "R")
-      rover_2.turn_rover
+      rover_2.turn_rover(x)
     else
       rover_2.move_rover
 
