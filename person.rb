@@ -2,17 +2,28 @@ class Person
   attr_accessor :name
 
   def greeting
-    "Hi! My name is #{name}"
+    puts "Hi! My name is #{name}"
   end
 end
 
-class Student
-  def method
-    "I get it!"
+class Student < Person
+  def learn
+    puts "I get it!"
   end
 end
 
-class Instructor
+class Instructor < Person
   def teach
-    "Everything in Ruby is an object."
+    puts "Everything in Ruby is an object."
+  end
 end
+
+chris = Instructor.new
+chris.name = "Chris"
+chris.greeting
+chris.teach
+
+cristina = Student.new
+cristina.name = "Cristina"
+cristina.greeting
+cristina.learn
